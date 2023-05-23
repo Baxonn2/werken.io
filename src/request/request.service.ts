@@ -9,7 +9,7 @@ export class RequestService {
 
     constructor() { }
 
-    getMessages(): RequestHook[] {
+    getRequests(): RequestHook[] {
         return this.messages;
     }
 

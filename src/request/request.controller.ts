@@ -12,7 +12,7 @@ export class RequestController {
 
     @Get()
     getRequests(): RequestHook[] {
-        return this.requestService.getMessages();
+        return this.requestService.getRequests();
     }
 
     @Post()
