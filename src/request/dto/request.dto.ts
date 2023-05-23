@@ -1,7 +1,7 @@
-import { IsDateString, IsIn, IsJSON, IsObject, IsOptional, IsString, IsUrl} from "class-validator";
-import { availableRequestMethods } from "./message.entities";
+import { IsDateString, IsIn, IsJSON, IsObject, IsOptional, IsUrl} from "class-validator";
+import { availableRequestMethods } from "./request";
 
-export class CreateRequestMessageDto {
+export class CreateRequestDto {
 
     @IsUrl()
     url: string;

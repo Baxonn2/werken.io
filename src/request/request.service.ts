@@ -1,20 +1,20 @@
 import { Injectable } from '@nestjs/common';
-import { RequestMessage } from './dto/message.entities';
-import { CreateRequestMessageDto } from './dto/message.dto';
+import { RequestHook } from './dto/request';
+import { CreateRequestDto } from './dto/request.dto';
 
 @Injectable()
-export class MessageService {
+export class RequestService {
 
-    messages: RequestMessage[] = [];
+    messages: RequestHook[] = [];
 
     constructor() { }
 
-    getMessages(): RequestMessage[] {
+    getMessages(): RequestHook[] {
         return this.messages;
     }
 
-    createRequestMessage(newRequest: CreateRequestMessageDto): RequestMessage {
-        const newRequestMessage: RequestMessage = {
+    createRequestMessage(newRequest: CreateRequestDto): RequestHook {
+        const newRequestMessage: RequestHook = {
             id: Math.random().toString(36).substr(2, 9),
             url: newRequest.url,
             headers: newRequest.headers,

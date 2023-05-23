@@ -8,7 +8,7 @@ export interface RequestResponse {
     body: Record<string, any>;
 }
 
-export interface RequestMessage {
+export interface RequestHook {
     id: string;
     url: string;
     headers?: Record<string, string>;
