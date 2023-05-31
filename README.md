@@ -7,7 +7,12 @@ Clone the repository and install the dependencies:
 ```bash
 npm install
 ```
-Then you can run the server by running the following command:
+Configure the database connection in a .env file. You can use the .env.example file as a template.
+Then you can run the migrations by running the following command:
+```bash
+npm run migration:run
+```
+Now you can run the server by running the following command:
 ```bash
 npm run start
 ```
