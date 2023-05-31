@@ -1,5 +1,5 @@
 import { IsDateString, IsIn, IsJSON, IsObject, IsOptional, IsUrl} from "class-validator";
-import { availableRequestMethods } from "./request";
+import { availableRequestMethods } from "./request.entity";
 
 export class CreateRequestDto {
 

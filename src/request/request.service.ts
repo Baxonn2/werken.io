@@ -1,32 +1,24 @@
 import { Injectable } from '@nestjs/common';
-import { RequestHook } from './dto/request';
+import { RequestHook } from './dto/request.entity';
 import { CreateRequestDto } from './dto/request.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class RequestService {
 
-    messages: RequestHook[] = [];
+    constructor(
+        @InjectRepository(RequestHook) private requestHookRepository: Repository<RequestHook>
+    ) { }
 
-    constructor() { }
-
-    getRequests(): RequestHook[] {
-        return this.messages;
+    async getRequests(): Promise<RequestHook[]> {
+        return await this.requestHookRepository.find();
     }
 
     createRequestMessage(newRequest: CreateRequestDto): RequestHook {
-        const newRequestMessage: RequestHook = {
-            id: Math.random().toString(36).substr(2, 9),
-            url: newRequest.url,
-            headers: newRequest.headers,
-            body: newRequest.body,
-            method: newRequest.method,
-            createdAt: new Date(),
-            sendAt: newRequest.sendAt,
-            isSended: false,
-            sendedAt: null,
-            response: null
-        };
-        this.messages.push(newRequestMessage);
+        const newRequestMessage = this.requestHookRepository.create(newRequest);
+        this.requestHookRepository.save(newRequestMessage);
+        
         return newRequestMessage;
     }        
 }
