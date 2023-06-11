@@ -8,6 +8,11 @@ Clone the repository and install the dependencies:
 npm install
 ```
 Configure the database connection in a .env file. You can use the .env.example file as a template.
+If you don't have a database yet, you can use the docker-compose file to start a database. You can
+start the database by running the following command:
+```bash
+docker-compose up -d
+```
 Then you can run the migrations by running the following command:
 ```bash
 npm run migration:run
