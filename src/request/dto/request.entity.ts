@@ -1,4 +1,4 @@
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 export const availableRequestMethods = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'];
 export type RequestMethod = typeof availableRequestMethods[number];
@@ -48,6 +48,7 @@ export class RequestHook {
     @Column({ type: 'timestamp', nullable: true })
     sendedAt: Date;
 
-    @OneToOne(() => RequestHook, { nullable: true })
+    @OneToOne(() => RequestResponse, { nullable: true })
+    @JoinColumn()
     response?: RequestResponse;
 }
