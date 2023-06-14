@@ -16,6 +16,10 @@ export class PriorityQueue<T> {
       this.items = [];
       this.direction = direction;
     }
+
+    get isLowerFirst(): boolean {
+      return this.direction === Direction.LOWER_FIRST;
+    }
   
     /**
      * Pushes an item into the queue with a priority
@@ -23,6 +27,10 @@ export class PriorityQueue<T> {
      * @param priority  - The priority of the item
      */
     enqueue(item: T, priority: number): void {
+      if (this.isLowerFirst) {
+        priority *= -1;
+      }
+
       const element = { priority, item };
       this.items.push(element);
       this.bubbleUp(this.items.length - 1);
@@ -42,6 +50,11 @@ export class PriorityQueue<T> {
       this.swap(0, this.items.length - 1);
       const max = this.items.pop();
       this.bubbleDown(0);
+
+      if (this.isLowerFirst) {
+        max!.priority *= -1;
+      }
+
       return max;
     }
 
