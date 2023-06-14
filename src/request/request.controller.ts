@@ -16,7 +16,7 @@ export class RequestController {
     }
 
     @Post()
-    createRequest(@Body() newRequest: CreateRequestDto): RequestHook {
-        return this.requestService.createRequestMessage(newRequest);
+    async createRequest(@Body() newRequest: CreateRequestDto): Promise<RequestHook> {
+        return await this.requestService.createRequestMessage(newRequest);
     }
 }
