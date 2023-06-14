@@ -5,7 +5,7 @@ services:
     image: mysql:8.0.33
     restart: always
     environment:
-      MYSQL_DATABASE: 'werken.io'
+      MYSQL_DATABASE: 'werken_io'
       MYSQL_USER: 'user'
       MYSQL_PASSWORD: 'password'
       MYSQL_ROOT_PASSWORD: 'password'
